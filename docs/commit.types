@@ -1,0 +1,33 @@
+List of available conventional commit types:
+
+> Commit types originally from [commitizen/cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog)
+> Adopted some of the types from [olivierlacan/keep-a-changelog](https://keepachangelog.com/en/1.0.0/)
+> Consulted types and concept from [lob/generate-changelog](https://github.com/lob/generate-changelog)
+
+| Type     | Title                    | Description                                                                                                 |
+| -------- | ------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| add      | Added                    | Added something to project scope (example scopes: folder, file)                                             |
+| change   | Changes                  | A code change that alters exsisting fucntionality (example scopes: breaking, update, move)                  |
+| feat     | Features                 | A new feature                                                                                               |
+| fix      | Bug Fixes                | A bug fix                                                                                                   |
+| docs     | Documentation            | Documentation only changes                                                                                  |
+| style    | Styles                   | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)      |
+| refactor | Code Refactoring         | A code change that neither fixes a bug nor adds a feature                                                   |
+| perf     | Performance Improvements | A code change that improves performance                                                                     |
+| test     | Tests                    | Adding missing tests or correcting existing tests                                                           |
+| build    | Builds                   | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)         |
+| ci       | Continuous Integrations  | Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) |
+| chore    | Chores                   | Other changes that don't modify src or test files                                                           |
+| revert   | Reverts                  | Reverts a previous commit                                                                                   |
+| obsolete | Deprecated               | Deprecated feature that will be removed                                                                     |
+| wip      | Work In Progress         | A commit that will be squashed later                                                                        |
+| sec      | Security                 | Used in case of vulnerabilities                                                                             |
+| remove   | Removed                  | A permanent removal of any change, file or feature                                                          |
+| initial  | Initial                  | Initial commit                                                                                              |
+
+
+example usage - 
+        add: populating repo with initial directory structure
+        change(breaking): changed function to parse new system namespace getscopearray()
+
+purpose: the purpose of this standardized workflow allows for automatic generation of changelogs directly from git commits
