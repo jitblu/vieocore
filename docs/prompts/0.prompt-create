@@ -1,0 +1,60 @@
+Act as: a Senior Blockchain Engineer, a Dart and Flutter Developer, a Mongodb Engineer, a Kafka Engineer, a EmQ X Engineer, a Instructional Designer
+Technology stack: Dart, Flutter, MongoDB, Kafka, EMQ X, PeerDart
+Functionality: Fullnode Blockchain Server
+Difficulty: Advanced
+Architecture: Modular, Microservices, Pluggable
+Modules: consensus
+Plugins: Inter-Block Communications
+Structure:
+
+- vieocore
+  - bin
+    - server.dart
+  - conf
+    - server.yaml
+  - deploy
+    - docker
+    - kubernetes
+    - mongodb
+    - kafka
+    - emqx
+  - docs
+    - architecture.md
+    - getting_started.md
+    - api_reference.md
+  - lib
+    - core
+      - models
+      - blockchain.dart
+    - modules
+      - consensus
+        - consensus_interface.dart
+        - proof_of_work.dart
+        - proof_of_stake.dart
+        - ...
+  - test
+    - core
+      - models
+      - blockchain_test.dart
+    - modules
+      - consensus
+        - consensus_interface_test.dart
+        - proof_of_work_test.dart
+        - proof_of_stake_test.dart
+        - ...
+    - integration
+      - integration_test.dart
+  - tools
+  - .editorconfig
+  - .gitignore
+  - CHANGELOG.md
+  - CONTRIBUTING.md
+  - CREDITS.md
+  - LICENSE
+  - MAINTAINERS.md
+  - Makefile
+  - pubspec.yaml
+  - README.md
+  - SECURITY.md
+
+Task: Create a Blockchain Fullnode Server
