@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:crypto/crypto.dart';
 import 'package:web_socket_channel/io.dart';
+import 'package:vieocore/core/models/block.dart';
 
 // Setting up default ports for HTTP and P2P communication
 int httpPort = int.tryParse(Platform.environment['HTTP_PORT'] ?? '') ?? 3001;
@@ -12,37 +13,6 @@ int p2pPort = int.tryParse(Platform.environment['P2P_PORT'] ?? '') ?? 6001;
 List<String> initialPeers = Platform.environment['PEERS'] != null
     ? Platform.environment['PEERS']!.split(',')
     : [];
-
-// Class representing a block in the blockchain
-class Block {
-  int index;
-  String previousHash;
-  int timestamp;
-  String data;
-  String hash;
-
-  Block(this.index, this.previousHash, this.timestamp, this.data, this.hash);
-
-  // Function to convert a block to JSON format
-  Map<String, dynamic> toJson() => {
-        'index': index,
-        'previousHash': previousHash,
-        'timestamp': timestamp,
-        'data': data,
-        'hash': hash,
-      };
-
-  // Function to create a block from JSON data
-  factory Block.fromJson(Map<String, dynamic> json) {
-    return Block(
-      json['index'],
-      json['previousHash'],
-      json['timestamp'],
-      json['data'],
-      json['hash'],
-    );
-  }
-}
 
 // Class representing a peer in the network
 class Peer {
