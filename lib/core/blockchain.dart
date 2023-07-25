@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:crypto/crypto.dart';
+import 'dart:typed_data';
+import 'package:pointycastle/export.dart';
 import 'package:vieocore/core/models/block.dart';
 import 'package:vieocore/core/network/p2p.dart';
 
@@ -32,9 +33,26 @@ String calculateHashForBlock(Block block) {
 // Function to calculate a hash
 String calculateHash(
     int index, String previousHash, int timestamp, String data) {
-  return sha256
-      .convert(utf8.encode('$index$previousHash$timestamp$data'))
-      .toString();
+  var bytes = utf8.encode('$index$previousHash$timestamp$data');
+  var digest = SHA256Digest().process(Uint8List.fromList(bytes));
+  return formatBytesAsHexString(digest);
+}
+
+/// Converts a [Uint8List] of bytes into a hexadecimal string.
+///
+/// This function iterates over each byte in the input list, converts it to a hexadecimal string,
+/// and appends it to a [StringBuffer]. Padding is added on the left with '0' to ensure each byte
+/// is represented by two characters.
+///
+/// The resulting string is returned.
+///
+/// [bytes] is the list of bytes to convert.
+String formatBytesAsHexString(Uint8List bytes) {
+  var result = StringBuffer();
+  for (var i = 0; i < bytes.length; i++) {
+    result.write('${bytes[i].toRadixString(16).padLeft(2, '0')}');
+  }
+  return result.toString();
 }
 
 // Function to add a block to the blockchain
