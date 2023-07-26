@@ -1,13 +1,24 @@
+import 'dart:io';
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:yaml/yaml.dart';
 import 'package:pointycastle/export.dart';
 import 'package:vieocore/core/models/block.dart';
 import 'package:vieocore/core/network/p2p.dart';
 
 // Function to get the genesis block
 Block getGenesisBlock() {
-  return Block(0, "0", 1465154705, "my genesis block!!",
-      "816534932c2b7154836da6afc367695e6337db8a921823784c14378abed4f7d7");
+  var file = File('conf/server.yaml');
+  var yamlString = file.readAsStringSync();
+  var config = loadYaml(yamlString);
+
+  return Block(
+    config['genesisBlock']['index'],
+    config['genesisBlock']['previousHash'],
+    config['genesisBlock']['timestamp'],
+    config['genesisBlock']['data'],
+    config['genesisBlock']['hash'],
+  );
 }
 
 // The blockchain, initialized with the genesis block
